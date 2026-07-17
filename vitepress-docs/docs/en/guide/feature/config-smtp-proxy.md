@@ -18,9 +18,8 @@ cd smtp_proxy_server/
 # Your worker address, proxy_url=https://temp-email-api.xxx.xxx
 # Your SMTP service port, port=8025
 cp .env.example .env
-python3 -m venv venv
-./venv/bin/python3 -m pip install -r requirements.txt
-./venv/bin/python3 main.py
+uv sync
+uv run main.py
 ```
 
 ### Docker Run
@@ -31,6 +30,16 @@ docker-compose up -d
 ```
 
 Modify the environment variables in docker-compose.yaml, note to choose the appropriate `tag`
+
+::: tip Faster builds in China
+The commented-out build config in `dockerfile` uses `Dockerfile.cn`, which configures Aliyun and TUNA PyPI mirrors — ideal for building from within China. Uncomment the `build` section to use it:
+
+```yaml
+build:
+  context: .
+  dockerfile: Dockerfile.cn
+```
+:::
 
 `proxy_url` is the URL address of the `worker`
 

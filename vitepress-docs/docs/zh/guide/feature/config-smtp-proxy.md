@@ -18,9 +18,8 @@ cd smtp_proxy_server/
 # 你的 worker 地址，proxy_url=https://temp-email-api.xxx.xxx
 # 你的 SMTP 服务端口，port=8025
 cp .env.example .env
-python3 -m venv venv
-./venv/bin/python3 -m pip install -r requirements.txt
-./venv/bin/python3 main.py
+uv sync
+uv run main.py
 ```
 
 ### Docker Run
@@ -31,6 +30,16 @@ docker-compose up -d
 ```
 
 修改 docker-compose.yaml 中的环境变量, 注意选择合适的 `tag`
+
+::: tip 国内构建加速
+`docker-compose.yaml` 中默认注释的构建配置使用了 `Dockerfile.cn`，内置了阿里云与清华 TUNA 的 PyPI 镜像源，适合国内网络环境构建。取消注释 `build` 段即可使用：
+
+```yaml
+build:
+  context: .
+  dockerfile: Dockerfile.cn
+```
+:::
 
 `proxy_url` 为 `worker` 的 URL 地址
 

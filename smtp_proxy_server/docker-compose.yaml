@@ -3,7 +3,7 @@ services:
     image: ghcr.io/dreamhunter2333/cloudflare_temp_email/smtp_proxy_server:latest
     # build:
     #   context: .
-    #   dockerfile: dockerfile
+    #   dockerfile: Dockerfile.cn
     container_name: "smtp_proxy_server"
     ports:
       - "8025:8025"

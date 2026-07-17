@@ -25,7 +25,7 @@ Run inside each subfolder with `pnpm`:
 | `vitepress-docs/` | `pnpm dev` | `pnpm build` | — | — |
 | `mail-parser-wasm/` | — | `wasm-pack build --release` | — | — |
 
-SMTP proxy: `pip install -r smtp_proxy_server/requirements.txt` then `python smtp_proxy_server/main.py`.
+SMTP proxy: `cd smtp_proxy_server && uv sync && uv run main.py`.
 
 ## E2E Tests
 
